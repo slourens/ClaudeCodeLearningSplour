@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everyday Utilities</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Everyday Utilities</h1>
+            <p class="subtitle">Text tools and unit conversions for daily tasks</p>
+        </header>
+
+        <nav class="tool-tabs">
+            <button class="tab-btn active" data-tool="counter">Counter</button>
+            <button class="tab-btn" data-tool="case">Case Converter</button>
+            <button class="tab-btn" data-tool="diff">Text Diff</button>
+            <button class="tab-btn" data-tool="convert">Unit Converter</button>
+        </nav>
+
+        <!-- Character/Word Counter -->
+        <div class="tool-panel active" id="counter">
+            <h2>Character & Word Counter</h2>
+            <textarea
+                id="counter-input"
+                placeholder="Type or paste your text here..."
+                rows="10"
+            ></textarea>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-value" id="char-count">0</span>
+                    <span class="stat-label">Characters</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="char-no-space">0</span>
+                    <span class="stat-label">Characters (no spaces)</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="word-count">0</span>
+                    <span class="stat-label">Words</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="line-count">0</span>
+                    <span class="stat-label">Lines</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="sentence-count">0</span>
+                    <span class="stat-label">Sentences</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="paragraph-count">0</span>
+                    <span class="stat-label">Paragraphs</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Converter -->
+        <div class="tool-panel" id="case">
+            <h2>Case Converter</h2>
+            <textarea
+                id="case-input"
+                placeholder="Type or paste your text here..."
+                rows="6"
+            ></textarea>
+            <div class="button-grid">
+                <button class="action-btn" data-case="lower">lowercase</button>
+                <button class="action-btn" data-case="upper">UPPERCASE</button>
+                <button class="action-btn" data-case="title">Title Case</button>
+                <button class="action-btn" data-case="sentence">Sentence case</button>
+                <button class="action-btn" data-case="camel">camelCase</button>
+                <button class="action-btn" data-case="pascal">PascalCase</button>
+                <button class="action-btn" data-case="snake">snake_case</button>
+                <button class="action-btn" data-case="kebab">kebab-case</button>
+                <button class="action-btn" data-case="constant">CONSTANT_CASE</button>
+            </div>
+            <div class="output-section">
+                <div class="output-header">
+                    <label>Output:</label>
+                    <button class="copy-btn" id="copy-case">Copy</button>
+                </div>
+                <textarea
+                    id="case-output"
+                    readonly
+                    rows="6"
+                    placeholder="Converted text will appear here..."
+                ></textarea>
+            </div>
+        </div>
+
+        <!-- Text Diff -->
+        <div class="tool-panel" id="diff">
+            <h2>Text Diff Checker</h2>
+            <div class="diff-container">
+                <div class="diff-column">
+                    <label>Original Text:</label>
+                    <textarea
+                        id="diff-original"
+                        placeholder="Paste your original text here..."
+                        rows="12"
+                    ></textarea>
+                </div>
+                <div class="diff-column">
+                    <label>Modified Text:</label>
+                    <textarea
+                        id="diff-modified"
+                        placeholder="Paste your modified text here..."
+                        rows="12"
+                    ></textarea>
+                </div>
+            </div>
+            <button class="action-btn primary" id="compare-btn">Compare Texts</button>
+            <div class="diff-results" id="diff-results"></div>
+        </div>
+
+        <!-- Unit Converter -->
+        <div class="tool-panel" id="convert">
+            <h2>Unit Converter</h2>
+
+            <div class="converter-category">
+                <label for="conversion-type">Conversion Type:</label>
+                <select id="conversion-type" class="conversion-select">
+                    <option value="temperature">Temperature</option>
+                    <option value="length">Length</option>
+                    <option value="weight">Weight</option>
+                    <option value="volume">Volume</option>
+                    <option value="filesize">File Size</option>
+                </select>
+            </div>
+
+            <div class="conversion-container">
+                <div class="conversion-input-group">
+                    <label for="from-value">From:</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="from-value" placeholder="Enter value" step="any">
+                        <select id="from-unit" class="unit-select"></select>
+                    </div>
+                </div>
+
+                <div class="conversion-swap">
+                    <button class="swap-btn" id="swap-units" title="Swap units">⇄</button>
+                </div>
+
+                <div class="conversion-input-group">
+                    <label for="to-value">To:</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="to-value" placeholder="Result" readonly>
+                        <select id="to-unit" class="unit-select"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conversion-formula" id="conversion-formula"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Built with vanilla JavaScript • No data stored or transmitted</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
